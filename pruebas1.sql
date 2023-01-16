@@ -31,3 +31,6 @@ create table if not exists profesorado
 		on delete no action on update cascade
     
 );
+
+use information_schema;
+select * from tables;
