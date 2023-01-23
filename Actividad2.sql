@@ -34,3 +34,13 @@ create table if not exists asignaturas (
     constraint asignaturas primary key (numasigna)
 
 );
+
+create table if not exists asignaturas (
+	
+    numasigna INT NOT NULL,
+    nomasigna VARCHAR (60) NULL,
+    curso VARCHAR(30) NULL,
+    
+    constraint asignaturas primary key (numasigna)
+
+);
