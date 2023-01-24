@@ -99,3 +99,33 @@ create table if not exists restauraciones
         references obras (codobra) on delete no action on update cascade
     
     );
+ 
+drop table if exists obrasmasbuscadas; 
+create table if not exists obrasmasbuscadas
+(
+	nomobra varchar(20),
+    nomautor varchar(20)
+    
+
+);
+
+drop table if exists turno;
+create table if not exists turno
+(
+	codturno int unsigned,
+    codsegur int unsigned,
+    codsala int unsigned,
+    fechainicial date,
+    fechafinal date,
+    
+    constraint pk_turno primary key (codturno),
+    
+    constraint fk_turno_seguridad foreign key (codsegur)
+        references seguridad(codsegur) 
+        on delete no action on update cascade,
+        
+        constraint fk_turno_salas foreign key (codsala)
+        references seguridad(codsegur) 
+        on delete no action on update cascade
+    
+);
