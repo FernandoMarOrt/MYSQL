@@ -124,8 +124,47 @@ create table if not exists turno
         references seguridad(codsegur) 
         on delete no action on update cascade,
         
-        constraint fk_turno_salas foreign key (codsala)
+        
+	constraint fk_turno_salas foreign key (codsala)
         references seguridad(codsegur) 
         on delete no action on update cascade
     
 );
+
+drop table if exists departamento;
+create table if not exists departamento
+(
+	coddepartamento int unsigned,
+    codemple int unsigned,
+    
+    constraint pk_departamento primary key (coddepartamento),
+    
+    constraint fk_departamento_empleados foreign key (codemple)
+		references empleados(codemple)
+        on delete no action on update cascade
+
+);
+/* Apartado D propuesto en clase*/
+/*CAMBIAMOS A LA OPCION B DE LA JERARQUIA*/
+
+
+
+/*** CAMBIOS EN FOREIGN KEY  ****/
+
+/* A. Queremos que si se elimina un empleado,
+      se elimine el
+      restaurador/vigilante relacionado
+*/
+
+/* B. No vamos a permitir que se modifique
+    el código de estilo
+      de una obra, en todo caso se le asignará el valor nulo
+*/
+/* C. Vamos a permitir que se eliminen artistas, en este caso
+      las obras se quedarán sin autor
+*/
+
+/* D. Vamos a permitir que se eliminen artistas, en este caso
+      las obras se quedarán sin autor, pero, una vez que demos
+    de alta una obra, el código de artista no podrá cambiar
+*/
